@@ -27,6 +27,7 @@ namespace DataUsage
         private IEnumerable<Service> services;
         private FormDetail detailForm;
         private System.Windows.Forms.Timer workTimer;
+		private Thread gciWorker;
 
         public Form1()
         {
@@ -86,17 +87,17 @@ namespace DataUsage
             this.ShowInTaskbar = false;
 
             //start worker thread that polls GCI
-            //gciWorker = new Thread(new ThreadStart(GCIActivityThread));
-            //gciWorker.Start();
+            gciWorker = new Thread(new ThreadStart(GCIActivityThread));
+            gciWorker.Start();
 
             //adds an additional "on complete" task for the webbrowser
             //webBrowser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webBrowser1_DocumentCompleted);
             //webBrowser1.Navigate("https://login.gci.com");
 
-            workTimer = new System.Windows.Forms.Timer();
-            workTimer.Interval = 1000 * 60 * 60 * Int32.Parse(Settings1.Default["frequency"].ToString());
-            workTimer.Tick += Timer_Tick;
-            workTimer.Start();
+            //workTimer = new System.Windows.Forms.Timer();
+            //workTimer.Interval = 1000 * 60 * 60 * Int32.Parse(Settings1.Default["frequency"].ToString());
+            //workTimer.Tick += Timer_Tick;
+            //workTimer.Start();
             #endregion
         }
 
@@ -132,7 +133,8 @@ namespace DataUsage
 
         private void QuitMenuItem_Click(object sender, EventArgs e)
         {
-            workTimer.Stop();
+            //workTimer.Stop();
+			gciWorker.Abort();
             activeIcon.Dispose();
             this.Close();
         }
@@ -235,7 +237,8 @@ namespace DataUsage
                     break;
                 default:
                     activeIcon.Dispose();
-                    workTimer.Stop();
+                    //workTimer.Stop();
+					gciWorker.Abort();
                     break;
             }
         }
