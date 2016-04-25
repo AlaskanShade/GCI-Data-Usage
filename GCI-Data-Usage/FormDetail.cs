@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DataUsage
+namespace GCI_Data_Usage
 {
     public partial class FormDetail : Form
     {

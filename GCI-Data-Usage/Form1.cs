@@ -16,7 +16,7 @@ using Microsoft.Win32;
 using System.Net;
 using ScrapySharp.Network;
 
-namespace DataUsage
+namespace GCI_Data_Usage
 {
     public partial class Form1 : Form
     {
@@ -26,7 +26,7 @@ namespace DataUsage
         private int internetPercentage = Int32.Parse(Settings1.Default["usage"].ToString());
         private IEnumerable<Service> services;
         private FormDetail detailForm;
-        private System.Windows.Forms.Timer workTimer;
+        //private System.Windows.Forms.Timer workTimer;
 		private Thread gciWorker;
 
         public Form1()
@@ -119,7 +119,7 @@ namespace DataUsage
             {
                 System.IO.Stream st;
                 var a = System.Reflection.Assembly.GetExecutingAssembly();
-                st = a.GetManifestResourceStream("DataUsage.Resources.icons." + name + "." + i.ToString() + ".ico");
+                st = a.GetManifestResourceStream("GCI_Data_Usage.Resources.icons." + name + "." + i.ToString() + ".ico");
                 iconArray[i] = new Icon(st);
             }
         }

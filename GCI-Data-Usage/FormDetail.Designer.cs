@@ -1,4 +1,4 @@
-﻿namespace DataUsage
+﻿namespace GCI_Data_Usage
 {
     partial class FormDetail
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataUsage {
+namespace GCI_Data_Usage {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
