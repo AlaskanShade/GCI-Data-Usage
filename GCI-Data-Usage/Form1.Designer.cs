@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,19 +41,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.lblLastCheck = new System.Windows.Forms.Label();
+            this.lblWireless = new System.Windows.Forms.Label();
+            this.lblHome = new System.Windows.Forms.Label();
+            this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.lblLeft = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Location = new System.Drawing.Point(201, 10);
-            this.webBrowser1.Margin = new System.Windows.Forms.Padding(2);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(15, 16);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.ScriptErrorsSuppressed = true;
-            this.webBrowser1.Size = new System.Drawing.Size(503, 426);
-            this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
             // 
             // label1
             // 
@@ -88,9 +81,8 @@
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 126);
+            this.label4.Location = new System.Drawing.Point(9, 130);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(149, 13);
@@ -99,7 +91,6 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
@@ -109,7 +100,7 @@
             "12",
             "24",
             "48"});
-            this.comboBox1.Location = new System.Drawing.Point(14, 146);
+            this.comboBox1.Location = new System.Drawing.Point(14, 150);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(36, 21);
@@ -118,13 +109,12 @@
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(65, 221);
+            this.button1.Location = new System.Drawing.Point(111, 192);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 27);
+            this.button1.Size = new System.Drawing.Size(70, 27);
             this.button1.TabIndex = 6;
-            this.button1.Text = "Save and Update";
+            this.button1.Text = "Save";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
@@ -141,6 +131,7 @@
             this.textBox_Password.Location = new System.Drawing.Point(65, 52);
             this.textBox_Password.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_Password.Name = "textBox_Password";
+            this.textBox_Password.PasswordChar = '*';
             this.textBox_Password.Size = new System.Drawing.Size(116, 20);
             this.textBox_Password.TabIndex = 8;
             // 
@@ -150,18 +141,17 @@
             this.progressBar1.Location = new System.Drawing.Point(0, 0);
             this.progressBar1.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(190, 8);
+            this.progressBar1.Size = new System.Drawing.Size(193, 8);
             this.progressBar1.TabIndex = 9;
             // 
             // comboBox2
             // 
-            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
             "white",
             "batfull27"});
-            this.comboBox2.Location = new System.Drawing.Point(14, 192);
+            this.comboBox2.Location = new System.Drawing.Point(14, 196);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(92, 21);
@@ -170,9 +160,8 @@
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 175);
+            this.label5.Location = new System.Drawing.Point(9, 179);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 13);
@@ -210,11 +199,59 @@
             0,
             0});
             // 
+            // lblLastCheck
+            // 
+            this.lblLastCheck.AutoSize = true;
+            this.lblLastCheck.Location = new System.Drawing.Point(12, 237);
+            this.lblLastCheck.Name = "lblLastCheck";
+            this.lblLastCheck.Size = new System.Drawing.Size(79, 13);
+            this.lblLastCheck.TabIndex = 14;
+            this.lblLastCheck.Text = "Last Checked: ";
+            // 
+            // lblWireless
+            // 
+            this.lblWireless.AutoSize = true;
+            this.lblWireless.Location = new System.Drawing.Point(25, 263);
+            this.lblWireless.Name = "lblWireless";
+            this.lblWireless.Size = new System.Drawing.Size(50, 13);
+            this.lblWireless.TabIndex = 15;
+            this.lblWireless.Text = "Wireless:";
+            // 
+            // lblHome
+            // 
+            this.lblHome.AutoSize = true;
+            this.lblHome.Location = new System.Drawing.Point(25, 287);
+            this.lblHome.Name = "lblHome";
+            this.lblHome.Size = new System.Drawing.Size(38, 13);
+            this.lblHome.TabIndex = 15;
+            this.lblHome.Text = "Home:";
+            // 
+            // progressBar2
+            // 
+            this.progressBar2.Location = new System.Drawing.Point(12, 312);
+            this.progressBar2.Name = "progressBar2";
+            this.progressBar2.Size = new System.Drawing.Size(169, 8);
+            this.progressBar2.TabIndex = 16;
+            // 
+            // lblLeft
+            // 
+            this.lblLeft.AutoSize = true;
+            this.lblLeft.Location = new System.Drawing.Point(25, 332);
+            this.lblLeft.Name = "lblLeft";
+            this.lblLeft.Size = new System.Drawing.Size(46, 13);
+            this.lblLeft.TabIndex = 17;
+            this.lblLeft.Text = "days left";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(190, 258);
+            this.ClientSize = new System.Drawing.Size(193, 440);
+            this.Controls.Add(this.lblLeft);
+            this.Controls.Add(this.progressBar2);
+            this.Controls.Add(this.lblHome);
+            this.Controls.Add(this.lblWireless);
+            this.Controls.Add(this.lblLastCheck);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -228,7 +265,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.webBrowser1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "GCI Data Usage";
@@ -240,8 +276,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -255,6 +289,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label lblLastCheck;
+        private System.Windows.Forms.Label lblWireless;
+        private System.Windows.Forms.Label lblHome;
+        private System.Windows.Forms.ProgressBar progressBar2;
+        private System.Windows.Forms.Label lblLeft;
     }
 }
 

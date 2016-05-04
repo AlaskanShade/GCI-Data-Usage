@@ -119,7 +119,7 @@ namespace GCI_Data_Usage
             {
                 System.IO.Stream st;
                 var a = System.Reflection.Assembly.GetExecutingAssembly();
-                st = a.GetManifestResourceStream("GCI_Data_Usage.Resources.icons." + name + "." + i.ToString() + ".ico");
+                st = a.GetManifestResourceStream("DataUsage.Resources.icons." + name + "." + i.ToString() + ".ico");
                 iconArray[i] = new Icon(st);
             }
         }
@@ -183,11 +183,17 @@ namespace GCI_Data_Usage
                 Settings1.Default["usage"] = Int32.Parse(internetPercentage.ToString());
                 Settings1.Default.Save();
                 activeIcon.Text = string.Format("Internet: {0}GB/{1}GB", internet.Total, internet.Cap);
+                lblHome.Text = String.Format("Home: {0}GB / {1}GB", internet.Total, internet.Cap);
+                progressBar2.Maximum = (int)internet.Cap;
+                progressBar2.Value = (int)internet.Total;
                 if (wireless != null)
                 {
+                    lblWireless.Text = String.Format("Wireless: {0}GB / {1}GB", wireless.Total, wireless.Cap);
                     activeIcon.Text += "\n";
                     activeIcon.Text += string.Format("Wireless: {0}GB /{1} GB", wireless.Total, wireless.Cap);
                 }
+                else
+                    lblWireless.Text = "Wireless: N/A";
 
                 var startDt = new DateTime(DateTime.Now.Year, DateTime.Now.Month, Settings1.Default.resetDay);
                 var endDt = startDt.AddMonths(1);
@@ -198,6 +204,7 @@ namespace GCI_Data_Usage
                 }
                 var expected = 1.0 * (DateTime.Now - startDt).TotalDays / (endDt - startDt).TotalDays * internet.Cap;
                 activeIcon.Text += String.Format("\nExpected: {0:#.00} for {1:#.#} days", expected, (DateTime.Now - startDt).TotalDays);
+                lblLeft.Text = String.Format("Expected: {0:#.00} for {1:#.#} days", expected, (DateTime.Now - startDt).TotalDays);
             }
             catch (UsageException)
             {
